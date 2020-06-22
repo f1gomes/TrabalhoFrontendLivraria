@@ -6,14 +6,14 @@ const livraria = [
 codigo: 1,
 titulo:"O Guia do Mochileiro das Galáxias",
 autor:"Douglas Adams",
-gemero:"Aventura",
+genero:"Aventura",
 quantidade:5
 },
 {
 codigo: 2,
 titulo:"Harry Potter 1",
 autor:"J.K. Rowling",
-gemero:"Aventura",
+genero:"Aventura",
 quantidade:3
 },
 ]
@@ -21,7 +21,19 @@ quantidade:3
 function ListaPage(){
     return <div>
         <Header/> 
-        <table></table>
+        <table>
+            {
+            livraria.map(item =>(
+                <tr>
+                    <td>{item.codigo}</td>
+                    <td>{item.titulo}</td>
+                    <td>{item.autor}</td>
+                    <td>{item.genero}</td>
+                    <td>{item.quantidade}</td>
+                </tr>
+            ) )
+            }
+        </table>
     </div>
 };
 
