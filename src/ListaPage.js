@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect , useState } from 'react';
 import Header from './Header';
+import api from './api';
 
-const livraria = [
+/*const livraria = [
 {
 codigo: 1,
 titulo:"O Guia do Mochileiro das Galáxias",
@@ -16,9 +17,21 @@ autor:"J.K. Rowling",
 genero:"Aventura",
 quantidade:3
 },
-]
+]*/
 
 function ListaPage(){
+
+    const [livraria, setLivraria] = useState([]);
+
+    async function loadData(){
+        
+        const response = await api.get('/');
+        const livraria = response.data;
+            setLivraria(livraria);
+        
+    }
+    useEffect(loadData, []);
+
     return <div>
         <Header/> 
         <table>
