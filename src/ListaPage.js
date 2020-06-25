@@ -1,6 +1,7 @@
-import React, { useEffect , useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import api from './api';
+import { useMemo } from 'react';
 
 /*const livraria = [
 {
@@ -26,14 +27,14 @@ function ListaPage(){
     async function loadData(){
         
         const response = await api.get('/');
-        const livraria = response.data;
-            setLivraria(livraria);
-        
+        setLivraria(response.data);        
     }
-    useEffect(loadData, []);
 
+    useMemo(loadData, []);
     return <div>
         <Header/> 
+        {/*<button onClick= {loadData}> Carregar dados</button>*/}
+        
         <table>
             {
             livraria.map(item =>(
