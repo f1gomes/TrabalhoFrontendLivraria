@@ -23,19 +23,21 @@ quantidade:3
 function ListaPage(){
 
     const [livraria, setLivraria] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     async function loadData(){
         
         const response = await api.get('/');
-        setLivraria(response.data);        
+        setLivraria(response.data);  
+        setLoading (false);
     }
 
     useMemo(loadData, []);
     return <div>
         <Header/> 
-        {/*<button onClick= {loadData}> Carregar dados</button>*/}
-        
-        <table>
+    {loading == true 
+        ? <span>Carregando Lista...</span> 
+        : <table>
             {
             livraria.map(item =>(
                 <tr>
@@ -48,6 +50,7 @@ function ListaPage(){
             ) )
             }
         </table>
+    }
     </div>
 };
 
