@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import Header from './Header';
 import api from './api';
-import { useMemo } from 'react';
+
 
 /*const livraria = [
 {
@@ -37,7 +37,7 @@ function ListaPage(){
         <Header/> 
     {loading == true 
         ? <span>Carregando Lista...</span> 
-        : <table>
+        : <table style = {{marginTop:'80px'}}>
             {
             livraria.map(item =>(
                 <tr>
