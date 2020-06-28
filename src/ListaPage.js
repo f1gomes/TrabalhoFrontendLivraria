@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import Header from './Header';
 import api from './api';
-
+import {Table, TableRow, TableCell } from '@material-ui/core';
 
 /*const livraria = [
 {
@@ -37,21 +37,22 @@ function ListaPage(){
         <Header/> 
     {loading == true 
         ? <span>Carregando Lista...</span> 
-        : <table style = {{marginTop:'80px'}}>
+
+        : <Table style = {{marginTop:'80px'}}>
             {
             livraria.map(item =>(
-                <tr>
-                    <td>{item.codigo}</td>
-                    <td>{item.titulo}</td>
-                    <td>{item.autor}</td>
-                    <td>{item.genero}</td>
-                    <td>{item.quantidade}</td>
-                </tr>
+                <TableRow>
+                    <TableCell>{item.codigo}</TableCell>
+                    <TableCell>{item.titulo}</TableCell>
+                    <TableCell>{item.autor}</TableCell>
+                    <TableCell>{item.genero}</TableCell>
+                    <TableCell>{item.quantidade}</TableCell>
+                </TableRow>
             ) )
             }
-        </table>
+        </Table>
     }
     </div>
-};
+}
 
 export default ListaPage;

@@ -1,9 +1,9 @@
 import React from 'react';
 import {AppBar, Typography, Toolbar} from '@material-ui/core';
 
-function Header(){
+function Header() {
 
-return (
+    return (
     <AppBar position="fixed" style={{marginBottom:'80px'}}>
         <Toolbar>
             <Typography variant="h6">
@@ -11,6 +11,7 @@ return (
             </Typography>
         </Toolbar>
     </AppBar>
-)
+    )
 }
+
 export default Header;
