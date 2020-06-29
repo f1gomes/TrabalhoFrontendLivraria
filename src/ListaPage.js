@@ -13,6 +13,7 @@ import {Table,
         TextField
         } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 
 /*const livraria = [
 {
@@ -66,6 +67,16 @@ function ListaPage(){
         setQuantidade();
         closeDialog();
     }
+    async function apagar(codigo){
+        await api.delete(`/${codigo}`);
+        loadData();
+    }
+    async function atualizar(codigo){
+        await api.put('/',{ quantidade });
+        loadData();
+        setQuantidade();
+        closeDialog();
+    }
 
     return <div>
         <Header/> 
@@ -81,8 +92,23 @@ function ListaPage(){
                     <TableCell style={{width:'25%'}}>{item.autor}</TableCell>
                     <TableCell>{item.genero}</TableCell>
                     <TableCell>{item.quantidade}</TableCell>
+
                     <TableCell>
-                        <Button variant="outlined" color="secodary" size="small">
+                        <Button 
+                        variant="outlined" 
+                        color="secodary" 
+                        size="small" 
+                        onClick={()=> apagar(item.codigo)}>
+                            <EditIcon/>Editar
+                        </Button>
+                    </TableCell>
+
+                    <TableCell>
+                        <Button 
+                        variant="outlined" 
+                        color="secodary" 
+                        size="small" 
+                        onClick={()=> apagar(item.codigo)}>
                             <DeleteIcon/>Apagar
                         </Button>
                     </TableCell>
